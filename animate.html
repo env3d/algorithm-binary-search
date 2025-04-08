@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Visualizer</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin: 2em; }
+    .word-box { display: inline-block; padding: 10px 15px; margin: 5px; border: 1px solid #ccc; border-radius: 5px; background: #f0f0f0; transition: background 0.3s; }
+    .word-box.range { background: #bbdefb; }
+    .word-box.highlight { background: #ffd54f !important; }
+    .word-box.found { background: #81c784 !important; }
+    .word-box.not-found { background: #e57373 !important; }
+    select, button { margin: 10px; padding: 5px 10px; }
+    #wordContainer { max-width: 100%; overflow-x: auto; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <h1>Linear vs Binary Search Visualizer</h1>
+  <label for="fileSelect">Choose a word list:</label>
+  <select id="fileSelect">
+    <option value="words1.txt">words1.txt</option>
+    <option value="words2.txt">words2.txt</option>
+  </select>
+  <input type="text" id="searchTerm" placeholder="Enter word to search">
+  <br>
+  <button onclick="runSearch('linear')">Run Linear Search</button>
+  <button onclick="stepSearch('linear')">Step Linear Search</button>
+  <button onclick="runSearch('binary')">Run Binary Search</button>
+  <button onclick="stepSearch('binary')">Step Binary Search</button>
+
+  <div id="wordContainer"></div>
+  <p id="status"></p>
+
+  <script>
+    let wordList = [];
+    let boxes = [];
+    let linearIndex = 0;
+    let binaryLeft = 0, binaryRight = 0, binaryList = [], sorted = false;
+
+    async function loadWords(filename) {
+      const response = await fetch(filename);
+      const text = await response.text();
+      wordList = text.toLowerCase().match(/\b\w+\b/g);
+      renderWords(wordList);
+      sorted = false;
+    }
+
+    function renderWords(words) {
+      const container = document.getElementById('wordContainer');
+      container.innerHTML = '';
+      boxes = words.map(word => {
+        const div = document.createElement('div');
+        div.className = 'word-box';
+        div.textContent = word;
+        container.appendChild(div);
+        return div;
+      });
+    }
+
+    async function runSearch(type) {
+      clearHighlights();
+      document.getElementById('status').textContent = 'Searching...';
+      if (type === 'linear') {
+        linearIndex = 0;
+        while (linearIndex < wordList.length) {
+          highlightBox(linearIndex);
+          await sleep(1000);
+          if (wordList[linearIndex] === document.getElementById('searchTerm').value.toLowerCase()) {
+            boxes[linearIndex].classList.add('found');
+            document.getElementById('status').textContent = `Found at position ${linearIndex}`;
+            return;
+          }
+          linearIndex++;
+        }
+        document.getElementById('status').textContent = 'Not found';
+      } else {
+        if (!sorted) {
+          binaryList = [...wordList].sort();
+          renderWords(binaryList);
+          sorted = true;
+        }
+        binaryLeft = 0;
+        binaryRight = binaryList.length - 1;
+        const term = document.getElementById('searchTerm').value.toLowerCase();
+        while (binaryLeft <= binaryRight) {
+          clearHighlights();
+          highlightRange(binaryLeft, binaryRight);
+          const mid = Math.floor((binaryLeft + binaryRight) / 2);
+          highlightBox(mid);
+          await sleep(1000);
+          if (binaryList[mid] === term) {
+            boxes[mid].classList.add('found');
+            document.getElementById('status').textContent = `Found at position ${mid}`;
+            return;
+          } else if (binaryList[mid] < term) {
+            binaryLeft = mid + 1;
+          } else {
+            binaryRight = mid - 1;
+          }
+        }
+        document.getElementById('status').textContent = 'Not found';
+      }
+    }
+
+    function stepSearch(type) {
+      const term = document.getElementById('searchTerm').value.toLowerCase();
+      clearHighlights();
+      document.getElementById('status').textContent = 'Searching...';
+      if (type === 'linear') {
+        if (linearIndex >= wordList.length) {
+          document.getElementById('status').textContent = 'Not found';
+          return;
+        }
+        highlightBox(linearIndex);
+        if (wordList[linearIndex] === term) {
+          boxes[linearIndex].classList.add('found');
+          document.getElementById('status').textContent = `Found at position ${linearIndex}`;
+          return;
+        }
+        linearIndex++;
+      } else {
+        if (!sorted) {
+          binaryList = [...wordList].sort();
+          renderWords(binaryList);
+          sorted = true;
+          binaryLeft = 0;
+          binaryRight = binaryList.length - 1;
+        }
+        if (binaryLeft > binaryRight) {
+          document.getElementById('status').textContent = 'Not found';
+          return;
+        }
+        const mid = Math.floor((binaryLeft + binaryRight) / 2);
+        highlightRange(binaryLeft, binaryRight);
+        highlightBox(mid);
+        if (binaryList[mid] === term) {
+          boxes[mid].classList.add('found');
+          document.getElementById('status').textContent = `Found at position ${mid}`;
+        } else if (binaryList[mid] < term) {
+          binaryLeft = mid + 1;
+        } else {
+          binaryRight = mid - 1;
+        }
+      }
+    }
+
+    function highlightBox(index) {
+      boxes.forEach(b => b.classList.remove('highlight'));
+      if (boxes[index]) {
+        boxes[index].classList.add('highlight');
+      }
+    }
+
+    function highlightRange(start, end) {
+      for (let i = start; i <= end; i++) {
+        if (boxes[i]) boxes[i].classList.add('range');
+      }
+    }
+
+    function clearHighlights() {
+      boxes.forEach(b => b.classList.remove('highlight', 'found', 'not-found', 'range'));
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    document.getElementById('fileSelect').addEventListener('change', e => {
+      loadWords(e.target.value);
+    });
+
+    loadWords(document.getElementById('fileSelect').value);
+  </script>
+</body>
+</html>
