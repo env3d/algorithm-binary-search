@@ -142,7 +142,7 @@ def find_item_in_list(target):
 
 <section>
   <h2>Binary Search Visualization</h2>
-  <iframe width="100%" height="800" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=list_of_items%20%3D%20%5B'it',%20'was',%20'the',%20'season',%20'of',%20'light',%20'it',%20'was',%20'the',%20'season',%20'of',%20'darkness'%5D%0Alist_of_items%20%3D%20sorted%28list_of_items%29%0A%0Adef%20find_item_in_list%28target%29%3A%0A%20%20%20%20left,%20right%20%3D%200,%20len%28list_of_items%29%20-%201%0A%20%20%20%20while%20left%20%3C%3D%20right%3A%0A%20%20%20%20%20%20%20%20mid%20%3D%20%28left%20%2B%20right%29%20//%202%0A%20%20%20%20%20%20%20%20item%20%3D%20list_of_items%5Bmid%5D%0A%20%20%20%20%20%20%20%20if%20item%20%3D%3D%20target%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20True%0A%20%20%20%20%20%20%20%20elif%20item%20%3C%20target%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20left%20%3D%20mid%20%2B%201%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20right%20%3D%20mid%20-%201%0A%20%20%20%20return%20False%0A%20%20%20%20%0Afind_item_in_list%28'light'%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=24&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>  
+  <iframe width="100%" height="800" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=list_of_items%20%3D%20%5B'it',%20'was',%20'the',%20'season',%20'of',%20'light',%20'it',%20'was',%20'the',%20'season',%20'of',%20'darkness'%5D%0Alist_of_items%20%3D%20sorted%28list_of_items%29%0A%0Adef%20find_item_in_list%28target%29%3A%0A%20%20%20%20left,%20right%20%3D%200,%20len%28list_of_items%29%20-%201%0A%20%20%20%20while%20left%20%3C%3D%20right%3A%0A%20%20%20%20%20%20%20%20mid%20%3D%20%28left%20%2B%20right%29%20//%202%0A%20%20%20%20%20%20%20%20item%20%3D%20list_of_items%5Bmid%5D%0A%20%20%20%20%20%20%20%20if%20item%20%3D%3D%20target%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20True%0A%20%20%20%20%20%20%20%20elif%20item%20%3C%20target%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20left%20%3D%20mid%20%2B%201%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20right%20%3D%20mid%20-%201%0A%20%20%20%20return%20False%0A%20%20%20%20%0Afind_item_in_list%28'light'%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 </section>
 
 <section>
@@ -157,7 +157,7 @@ def find_item_in_list(target):
 </section>
 
 <section>
-  <h2>Real-World Example: Game Animation</h2>
+  <h2>Real-World Example</h2>
   <p>In <code>game.py</code>, a character walks past buildings:</p>
   <p><code>[10, 50, 120, 200, 250, 310, 400, 450, 500, 600]</code></p>
   <p>We only want buildings near character’s <code>x</code> position (e.g., 300).</p>
@@ -165,7 +165,7 @@ def find_item_in_list(target):
 </section>
 
 <section>
-  <h2>Linear vs Binary Search in Game</h2>
+  <h2>Linear vs Binary Search</h2>
   <ul>
     <li>With 1 million buildings:
       <br> - <strong>Linear Search</strong>: Too slow
@@ -181,9 +181,21 @@ def find_item_in_list(target):
     <li><strong>Linear Search</strong>: Simple but slow for large lists.</li>
     <li><strong>Binary Search</strong>: Much faster — but needs sorted data.</li>
     <li>The structure of your algorithm can make a huge difference.</li>
+    <li>Lesson URL: <a target="_blank" href="https://github.com/env3d/algorithm-binary-search">https://github.com/env3d/algorithm-binary-search</a></li>
   </ul>
   <p>👩‍💻 Efficiency matters!</p>
 </section>
+
+<section>
+    <h2>What's Next?</h2>
+    <ul>
+      <li><strong>Sorting Algorithms</strong>: Sorting is often the first step before searching.</li>
+      <li><strong>Data Structures</strong>: Arrays, linked lists, trees, etc.</li>
+      <li><strong>Algorithm Complexity</strong>: Big-O notation - Ways to reason about speed and storage as data grows.</li>
+      <li><strong>Recursive Thinking</strong>: Binary search is a great intro to recursion.</li>
+      <li><strong>Real-World Tradeoffs</strong>: Fast vs. memory-efficient vs. simple.</li>
+    </ul>
+  </section>
 
     </div>
   </div>
