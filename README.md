@@ -38,6 +38,8 @@ or the "Step Linear Search" button to see how it works.
 
 Alternatively, use [this](https://pythontutor.com/render.html#code=list_of_items%20%3D%20%5B'it',%20'was',%20'the',%20'season',%20'of',%20'light',%20'it',%20'was',%20'the',%20'season',%20'of',%20'darkness'%5D%0A%0Adef%20find_item_in_list%28target%29%3A%0A%20%20%20%20for%20item%20in%20list_of_items%3A%0A%20%20%20%20%20%20%20%20if%20target%20%3D%3D%20item%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20True%0A%20%20%20%20return%20False&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) link to visualize the actual code.
 
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=list_of_items%20%3D%20%5B'it',%20'was',%20'the',%20'season',%20'of',%20'light',%20'it',%20'was',%20'the',%20'season',%20'of',%20'darkness'%5D%0A%0Adef%20find_item_in_list%28target%29%3A%0A%20%20%20%20for%20item%20in%20list_of_items%3A%0A%20%20%20%20%20%20%20%20if%20target%20%3D%3D%20item%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20True%0A%20%20%20%20return%20False&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
 
 Then, we’ll introduce binary search. It uses the exact same coding building
 blocks (variables, loops, conditionals), but by arranging them differently, we can achieve dramatically faster performance. This highlights the power 
