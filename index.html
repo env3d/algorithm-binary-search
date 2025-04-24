@@ -211,7 +211,7 @@ def find_item_in_list(target):
                         <li>If it's the target, done!</li>
                         <li>If the target is smaller, search left half.</li>
                         <li>If larger, search right half.</li>
-                        <li>Repeat until found or list is empty.</li>
+                        <li>Repeat with new half until found or list is empty.</li>
                     </ol>
                     
                 </blockquote>
@@ -262,7 +262,8 @@ def find_item_in_list(target):
                 <p>In <code>game.py</code>, a character walks past buildings:</p>
                 <p><code>[10, 50, 120, 200, 250, 310, 400, 450, 500, 600]</code></p>
                 <p>We only want buildings near character’s <code>x</code> position (e.g., 300).</p>
-                <p>At 60 frames/second, we do this 60 times every second!</p>
+                <p>At 30 frames/second, we do this 30 times every second!</p>
+                <p>Can we afford this?</p>
             </section>
 
             <section>
@@ -280,8 +281,8 @@ def find_item_in_list(target):
             <section>
                 <h2>Summary</h2>
                 <ul>
-                    <li><strong>Linear Search</strong>: Simple but slow for large lists.</li>
-                    <li><strong>Binary Search</strong>: Much faster — but needs sorted data.</li>
+                    <li><strong>Linear Search</strong>: Simple, works on unsorted lists, slow for large inputs (O(N))</li>
+                    <li><strong>Binary Search</strong>: Requires sorted list, but much faster (O(log N))</li>                
                     <li>The structure of your algorithm can make a huge difference.</li>
                     <li>Lesson URL: <a target="_blank"
                             href="https://github.com/env3d/algorithm-binary-search">https://github.com/env3d/algorithm-binary-search</a>
