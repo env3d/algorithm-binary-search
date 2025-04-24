@@ -73,8 +73,7 @@ list of movies.  So for a list of N movies, we will need to perform N comparison
   - **Process**: Linear search will compare each movie's rating to find the lowest.
   - **Number of Comparisons**: For 5 movies, it will perform 5 comparisons.
 
-But what happens if the movies list is sorted by ratings?  In that case, we don't 
-need to do any comparisons, because the first item would have the lowest rating.
+But what happens if the movies list is sorted by ratings?  In that case, we don’t need to search because the lowest-rated movie is already at the front of the list.
 
 ### Table 2: **Sorted List (Binary Search Assumption)**
 | Index | Movie Title         | Rating |
@@ -114,7 +113,7 @@ Or if you prefer code:
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=list_of_items%20%3D%20%5B'it',%20'was',%20'the',%20'season',%20'of',%20'light',%20'it',%20'was',%20'the',%20'season',%20'of',%20'darkness'%5D%0Alist_of_items%20%3D%20sorted%28list_of_items%29%0A%0Adef%20find_item_in_list%28target%29%3A%0A%20%20%20%20left,%20right%20%3D%200,%20len%28list_of_items%29%20-%201%0A%20%20%20%20while%20left%20%3C%3D%20right%3A%0A%20%20%20%20%20%20%20%20mid%20%3D%20%28left%20%2B%20right%29%20//%202%0A%20%20%20%20%20%20%20%20item%20%3D%20list_of_items%5Bmid%5D%0A%20%20%20%20%20%20%20%20if%20item%20%3D%3D%20target%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20True%0A%20%20%20%20%20%20%20%20elif%20item%20%3C%20target%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20left%20%3D%20mid%20%2B%201%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20right%20%3D%20mid%20-%201%0A%20%20%20%20return%20False%0A%20%20%20%20%0Afind_item_in_list%28'light'%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=24&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 NOTE: Not only do we need to sort the list, the code is also considerably more complex.  
-This is very typical of advanced algorithms - they are often much more complex in it's 
+This is very typical of advanced algorithms - they are often much more complex in its 
 implementation.
 
 ### Questions
@@ -146,8 +145,9 @@ shows that there are 10 buildings in the game:
 Because the screen can only show a limited number of buildings, we only want
 to retrieve buildings that are closed to our character location. For example, 
 if our character is at location 300, then we may only want to show buildings
-in location 250 and 310.  Since this is an real-time animation (i.e. a game)
-we will need to perform this serach 60 times per second.
+in location 250 and 310.  Since this is a real-time animation (i.e. a game)
+we will need to perform this serach 30 times per second for the animation
+to be smooth.
 
 Modern computers are really fast so you actually won't see any difference 
 until we have a really really long list.
