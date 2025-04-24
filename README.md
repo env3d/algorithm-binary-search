@@ -36,7 +36,7 @@ The above algorithm is called "linear search".  You can visit
 https://env3d.github.io/algorithm-binary-search/animate.html and click the "Run Linear Search"
 or the "Step Linear Search" button to see how it works.
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=list_of_items%20%3D%20%5B'it',%20'was',%20'the',%20'season',%20'of',%20'light',%20'it',%20'was',%20'the',%20'season',%20'of',%20'darkness'%5D%0A%0Adef%20find_item_in_list%28target%29%3A%0A%20%20%20%20for%20item%20in%20list_of_items%3A%0A%20%20%20%20%20%20%20%20if%20target%20%3D%3D%20item%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20True%0A%20%20%20%20return%20False%0A%20%20%20%20%0Afind_item_in_list%28'light'%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="100%" height="800" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=list_of_items%20%3D%20%5B'it',%20'was',%20'the',%20'season',%20'of',%20'light',%20'it',%20'was',%20'the',%20'season',%20'of',%20'darkness'%5D%0A%0Adef%20find_item_in_list%28target%29%3A%0A%20%20%20%20for%20item%20in%20list_of_items%3A%0A%20%20%20%20%20%20%20%20if%20target%20%3D%3D%20item%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20True%0A%20%20%20%20return%20False%0A%20%20%20%20%0Afind_item_in_list%28'light'%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 
 Then, we’ll introduce binary search. It uses the exact same coding building
